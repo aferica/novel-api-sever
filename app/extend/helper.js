@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const dayjs = require('dayjs');
 
 // 处理成功响应
 exports.success = ({
@@ -44,7 +45,7 @@ exports.successOtherWithoutData = ({
 }
 
 // 格式化时间
-exports.formatTime = time => moment(time).format('YYYY-MM-DD HH:mm:ss')
+exports.formatTime = time => dayjs(time).format('YYYY-MM-DD HH:mm:ss')
 
 // 生成token
 exports.createToken = (ctx, _id) => {

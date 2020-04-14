@@ -3,7 +3,6 @@
 /**
  * @param {Egg.Application} app - egg application
  */
-const userRouter = require('./routers/user');
 const novelRouter = require('./routers/novel');
 
 module.exports = app => {
@@ -13,6 +12,5 @@ module.exports = app => {
   } = app;
   router.get('/', controller.home.index);
 
-  userRouter(app);
   novelRouter(app);
 };

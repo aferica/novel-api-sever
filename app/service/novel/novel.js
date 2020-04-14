@@ -7,21 +7,44 @@ class NovelService extends Service {
     if (!novel) {
       this.ctx.throw(404, 'novel not found');
     }
-    return this.app.mysql.get('novel', { id: _id });
+    return novel;
   }
 
   async find(id) {
-    return this.app.mysql.get('novel', { id: id });
+    return this.ctx.model.Novel.findOne({ id: id });
   }
 
   async create(novel) {
-    const result = await this.app.mysql.insert('novel', novel);
-    const insertSuccess = result.affectedRows === 1;
-    const insertId = result.insertId;
-    if (!insertSuccess) {
-      this.ctx.throw(404, '插入失败');
+    return await this.ctx.model.Novel.create(novel);
+  }
+
+  async index(payload) {
+    let limit = 20;
+    let page = 1;
+    if (payload.limit) {
+      limit = parseInt(payload.limit);
+      delete payload.limit;
     }
-    return this.ctx.service.novel.novel.find(insertId);
+    if (payload.page) {
+      page = parseInt(payload.page);
+      delete payload.page;
+    }
+    let res = [];
+    let count = 0;
+    res = await this.ctx.model.Novel.find(payload, { '__v': 0 })
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .exec();
+    count = await this.ctx.model.Novel.countDocuments(payload).exec();
+    // 整理数据源 -> Ant Design Pro
+    let data = res.map((e,i) => {
+      let jsonObject = Object.assign({}, e._doc);
+      jsonObject.createdAt = this.ctx.helper.formatTime(e.createdAt);
+      jsonObject.updatedAt = this.ctx.helper.formatTime(e.updatedAt);
+      return jsonObject
+    })
+
+    return { count, list: data, limit, page };
   }
 }
 

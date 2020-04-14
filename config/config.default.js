@@ -44,25 +44,15 @@ module.exports = appInfo => {
     bcrypt: {
       saltRounds: 10 // default 10
     },
-    // mysql
-    mysql: {
-      // database configuration
+
+    mongoose: {
       client: {
-        // host
-        host: 'localhost',
-        // port
-        port: '3306',
-        // username
-        user: 'root',
-        // password
-        password: '123456',
-        // database
-        database: 'novel',
-      },
-      // load into app, default is open
-      app: true,
-      // load into agent, default is close
-      agent: false,
+        url: 'mongodb://127.0.0.1:27017/novel',
+        options: {
+          useNewUrlParser: true,
+          useUnifiedTopology: true
+        },
+      }
     }
   };
 
