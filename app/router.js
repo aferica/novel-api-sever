@@ -4,6 +4,7 @@
  * @param {Egg.Application} app - egg application
  */
 const novelRouter = require('./routers/novel');
+const ruleRouter = require('./routers/rule');
 
 module.exports = app => {
   const {
@@ -13,4 +14,5 @@ module.exports = app => {
   router.get('/', controller.home.index);
 
   novelRouter(app);
+  ruleRouter(app);
 };
