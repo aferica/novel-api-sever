@@ -6,5 +6,5 @@ module.exports = app => {
     controller
   } = app;
 
-  router.resources('rule', '/api/rule', controller.rule.rule);
+  router.resources('rule', '/api/rule', controller.novel.rule);
 };
