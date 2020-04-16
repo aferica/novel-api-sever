@@ -1,25 +1,25 @@
 <!doctype html>
 <html>
   <head>
-    <title>{{title}}</title>
+    <title>小说API平台--{{title}}</title>
     <meta charset="utf-8" />
     <meta name="keywords" content="{{keywords}}" />
     <meta name="description" content="{{description}}" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    {% block nav %}{% include "component/nav.html" %}{% endblock %}
+    <div class="glass"></div>
+      {% block nav %}{% include "component/nav.html" %}{% endblock %}
 
-    <div class="container jumbotron main-content">
-    {% block body %}{% endblock %}
-    </div>
-
-    <footer class="footer">
-      <div class="align-middle">
-        <span class="align-middle">middle垂直居中</span>
+      <div class="container main-content">
+        <div>
+          <h3>{{title}}</h3>
+          {% block body %}{% endblock %}
+        </div>
       </div>
-    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -27,22 +27,59 @@
   </body>
 
   <style type="text/css">
-    body {
-        background-color: #eee;
-    }
-
     .main-content {
-        min-height: calc(100vh - 8em);
-        background-color: white;
+      height: calc(100vh - 4.5em);
+      width: 100%;
+      margin-top: 1em;
+      background-color: #f0fcff;
+      border-top-left-radius: 0.5em;
+      border-top-right-radius: 0.5em;
+      padding: 1em;
+      overflow-y: scroll;
     }
 
-    .footer {
-        background-color: black;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        height: 5em;
+    body {
+      background: url('../public/59cdaae6b4f93.jpg') no-repeat;
+    }
+
+    .glass {
+      position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: inherit;
+      position: relative;
+    }
+    .glass::before {
+      -webkit-filter: blur(10px);   
+      -moz-filter: blur(10px);   
+      -ms-filter: blur(10px);   
+      -o-filter: blur(10px);   
+      filter: blur(10px);   
+      filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);   
+    }
+
+    h3 {
+      margin-bottom: 2em;
+    }
+
+    /*修改滚动条样式*/
+    div::-webkit-scrollbar{
+      width:10px;
+      height:10px;
+      /**/
+    }
+    div::-webkit-scrollbar-track{
+      background: #f0fcff;
+      border-radius:2px;
+    }
+    div::-webkit-scrollbar-thumb{
+      background: #949494;
+      border-radius:10px;
+    }
+    div::-webkit-scrollbar-thumb:hover{
+      background:#333;
+    }
+    div::-webkit-scrollbar-corner{
+      background: #179a16;
     }
   </style>
 </html>

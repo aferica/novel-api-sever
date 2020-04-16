@@ -10,7 +10,7 @@ class RuleController extends Controller {
     } = this;
     const { id } = ctx.params;
     // 调用 Service 进行业务处理
-    const res = await service.rule.rule.show(id);
+    const res = await service.novel.rule.show(id);
     // 设置响应内容和响应状态码
     ctx.helper.success({ ctx, res });
   }
@@ -21,7 +21,7 @@ class RuleController extends Controller {
     // 组装参数
     const payload = ctx.request.body || {};
     // 调用 Service 进行业务处理
-    const res = await service.rule.rule.create(payload);
+    const res = await service.novel.rule.create(payload);
     // 设置响应内容和响应状态码
     ctx.helper.success({ctx, res});
   }
@@ -31,10 +31,11 @@ class RuleController extends Controller {
     // 组装参数
     const payload = ctx.query;
     // 调用 Service 进行业务处理
-    const res = await service.rule.rule.index(payload);
+    const res = await service.novel.rule.index(payload);
     // 设置响应内容和响应状态码
     ctx.helper.success({ctx, res});
   }
+
 }
 
 module.exports = RuleController;

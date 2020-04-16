@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">名称</th>
+      <th scope="col">作者</th>
+      <th scope="col">级别</th>
+      <th scope="col">是否可用</th>
+      <th scope="col">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in list.list %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{item.name}}</td>
+        <td>{{item.createBy}}</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>
+          <button type="button" class="btn btn-sm btn-primary">详情</button>
+          <button type="button" class="btn btn-sm btn-secondary">复制</button>
+          <button type="button" class="btn btn-sm btn-danger">删除</button>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

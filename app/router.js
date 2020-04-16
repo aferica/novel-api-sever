@@ -12,6 +12,9 @@ module.exports = app => {
     controller
   } = app;
   router.get('/', controller.home.index);
+  router.get('/list', controller.home.list);
+  router.get('/form', controller.home.form);
+  router.get('/doc', controller.home.doc);
 
   novelRouter(app);
   ruleRouter(app);
