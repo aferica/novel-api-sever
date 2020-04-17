@@ -23,7 +23,7 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
     jwt: {
-      secret: 'JWTTOKEN', // jwt加密密钥，自定义
+      secret: 'AFERICATOKEN', // jwt加密密钥，自定义
       enable: false,
       match: '/api' // 路径匹配，以/api开头的请求需要验证
     },
@@ -53,13 +53,6 @@ module.exports = appInfo => {
           useUnifiedTopology: true
         },
       }
-    },
-
-    view: {
-      defaultViewEngine: 'nunjucks',
-      mapping: {
-        '.html': 'nunjucks' //左边写成.html后缀，会自动渲染.html文件
-      },
     }
   };
 

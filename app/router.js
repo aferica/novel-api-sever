@@ -5,6 +5,7 @@
  */
 const novelRouter = require('./routers/novel');
 const ruleRouter = require('./routers/rule');
+const userRouter = require('./routers/user');
 
 module.exports = app => {
   const {
@@ -12,10 +13,8 @@ module.exports = app => {
     controller
   } = app;
   router.get('/', controller.home.index);
-  router.get('/list', controller.home.list);
-  router.get('/form', controller.home.form);
-  router.get('/doc', controller.home.doc);
 
   novelRouter(app);
   ruleRouter(app);
+  userRouter(app);
 };
